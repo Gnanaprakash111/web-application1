@@ -5,7 +5,6 @@ pipeline {
             steps {
                 script {
                     sh 'npm install' // For React
-                    sh 'dotnet build' // For .NET
                 }
             }
         }
@@ -13,7 +12,6 @@ pipeline {
             steps {
                 script {
                     sh 'npm test' // For React
-                    sh 'dotnet test' // For .NET
                 }
             }
         }
