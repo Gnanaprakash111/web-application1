@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    sh 'npm install' // For React
+                    sh 'dotnet build' // For .NET
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    sh 'npm test' // For React
+                    sh 'dotnet test' // For .NET
+                }
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                script {
+                    sh 'docker build -t myapp:latest .'
+                }
+            }
+        }
+    }
+}
+
